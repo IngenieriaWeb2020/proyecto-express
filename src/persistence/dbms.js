@@ -3,7 +3,11 @@ const config = require('../config/config');
 
 module.exports = {
     connect: () => {
-        mongoose.connect(config.DB, {useNewUrlParser: true,useUnifiedTopology: true})
+        mongoose.connect(config.DB, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                useCreateIndex: true
+            })
             .then(() => {
                 console.log('Conectado a base de datos Mongo')
             })
