@@ -65,8 +65,11 @@ function verificarToken(req, res, next){
         }
         else if(path === '/maquinas' && method === 'POST'){
             let tienePermiso = permisos.registrarMaquina;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
+            if(tienePermiso) return next(); 
             return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
+        }
+        else if((path === '/maquinas' || path === ('/maquinas/' + params.id)) && method === 'GET'){
+            return next();
         }
         else if(path === '/inventarios' && method === 'PUT'){
             let tienePermiso = permisos.actualizarInventario;
