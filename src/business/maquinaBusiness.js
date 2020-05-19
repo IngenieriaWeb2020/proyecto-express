@@ -33,8 +33,8 @@ async function maquinaById(req, res){
 
 async function maquinas(req, res){
     try {
-        let maquinasNuevas = await Maquina.find().where('estado', 'Nueva');
-        let maquinasSegunda = await Maquina.find().where('estado', 'Segunda');
+        let maquinasNuevas = await Maquina.find().where('estado', 'Nueva').where('estadoInventario', 'Disponible');
+        let maquinasSegunda = await Maquina.find().where('estado', 'Segunda').where('estadoInventario', 'Disponible');
         res.send({auth: true, maquinasNuevas, maquinasSegunda});
     } catch (err) {
         res.status(500).send({auth: false, msg: msgs.serverError, errmsg: err.errmsg || err.message});

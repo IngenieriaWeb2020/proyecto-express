@@ -4,8 +4,7 @@ const config = require('../config/config');
 
 const userSchema = new Schema({
     cedula: {
-        type: String,
-        unique: true
+        type: String
     },
     nombre: {
         type: String,
@@ -17,7 +16,6 @@ const userSchema = new Schema({
     },
     correo: {
         type: String,
-        unique: true,
         lowercase: true,
         trim: true  // Quita espacios en blanco
     },
@@ -35,8 +33,7 @@ const userSchema = new Schema({
         enum: config.roles
     },
     username: {
-        type: String,
-        unique: true
+        type: String
     },
     password: {
         type: String
@@ -49,6 +46,8 @@ const userSchema = new Schema({
         type: Date
     }
 })
+
+userSchema.path('cedula').index({sparse: true})
 
 userSchema.methods.encryptPassword = async (password) => {
     let salt = await bcrypt.genSalt(10);
