@@ -81,8 +81,7 @@ router.post('/login', security.validateLogin)
         res.send({msg: 'Registrado', puntoVenta});
         */
 
-        //tareasPrueba.generarReportesInventario();
-
+        tareasPrueba.ventasSemanales();
         res.send('x');
     });
 

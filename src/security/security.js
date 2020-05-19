@@ -68,16 +68,8 @@ function verificarToken(req, res, next){
             if(tienePermiso) return next(); 
             return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
         }
-        else if((path === '/maquinas' || path === ('/maquinas/' + params.id)) && method === 'GET'){
-            return next();
-        }
         else if(path === '/inventarios' && method === 'PUT'){
             let tienePermiso = permisos.actualizarInventario;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
-            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
-        }
-        else if(path === '/ventas' && method === 'POST'){
-            let tienePermiso = permisos.registrarVenta;
             if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
             return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
         }

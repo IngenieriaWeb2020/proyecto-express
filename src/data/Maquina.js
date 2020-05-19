@@ -46,8 +46,7 @@ const maquinaSchema = new Schema({
         default: 'Disponible',
         enum: [
             'Disponible',
-            'Vendida',
-            'Vendiendo'
+            'Vendida'
         ]
     }
 });

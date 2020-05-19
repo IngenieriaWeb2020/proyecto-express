@@ -6,7 +6,7 @@ const security = require('../security/security');
 const router = new Router();
 
 router.post('/maquinas', security.verificarToken, maquinaBusiness.registrarMaquina)
-    .get('/maquinas', security.verificarToken, maquinaBusiness.maquinas)
-    .get('/maquinas/:id', security.verificarToken, maquinaBusiness.maquinaById);
+    .get('/maquinas', maquinaBusiness.maquinas)
+    .get('/maquinas/:id', maquinaBusiness.maquinaById);
 
 module.exports = router;

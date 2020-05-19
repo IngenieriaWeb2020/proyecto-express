@@ -4,5 +4,6 @@ module.exports = {
     noToken: 'No se ha enviado un token',
     invalidPath: 'La ruta provista es inválida',
     serverError: 'Ha ocurrido un error, por favor inténtelo de nuevo',
-    registered: 'Registrado correctamente'
+    registered: 'Registrado correctamente',
+    sold: 'La máquina ya esta vendida'
 }
