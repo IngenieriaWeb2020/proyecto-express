@@ -17,6 +17,7 @@ app.use(express.urlencoded({extended: false})); // Entender parámetros en la ur
 app.use(require('./controller/loginController'));
 app.use(require('./controller/maquinaController'));
 app.use(require('./controller/ventaController'));
+app.use(require('./controller/compraController'));
 
 // Tareas programadas en la aplicacion
 cron.schedule('0 6 1 * *', function(){ // El primero de cada mes a las 6:00 am
