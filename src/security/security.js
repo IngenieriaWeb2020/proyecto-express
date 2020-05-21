@@ -50,9 +50,56 @@ function verificarToken(req, res, next){
 
         if(path === '/usuarios/' + params.id && method === 'GET'){
             let tienePermiso = permisos.verUsuario;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
+            if(tienePermiso) return next();
             return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
         }
+        else if(path === '/usuarios' && method === 'GET'){
+            let tienePermiso = permisos.verUsuarios;
+            if(tienePermiso) return next();
+            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
+        }
+        else if(path === '/usuarios' && method === 'POST'){
+            let tienePermiso = permisos.registrarUsuario;
+            if(tienePermiso) return next();
+            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
+        }
+        else if(path === '/usuarios' && method === 'PUT'){
+            let tienePermiso = permisos.actualizarUsuario;
+            if(tienePermiso) return next();
+            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
+        }
+        else if(path === '/compras' && method === 'POST'){
+            let tienePermiso = permisos.registrarCompra;
+            if(tienePermiso) return next();
+            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
+        }
+        else if(path === '/maquinas' && method === 'POST'){
+            let tienePermiso = permisos.registrarMaquina;
+            if(tienePermiso) return next(); 
+            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
+        }       
+        else if(path === '/contratos' && method === 'GET'){
+            let tienePermiso = permisos.registrarContrato;
+            if(tienePermiso) return next();
+            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
+        }
+        else if(path === '/reportes' && method === 'GET'){
+            let tienePermiso = permisos.verReportes;
+            if(tienePermiso) return next();
+            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
+        }
+        else if(path === '/reportes/' + params.id && method === 'GET'){
+            let tienePermiso = permisos.verReporte;
+            if(tienePermiso) return next(); 
+            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
+        }
+        /* else if(path === '/maquinas' && method === 'PUT'){
+            let tienePermiso = permisos.actualizarInventario;
+            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
+            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
+        } */
+
+
         else if(path === '/perfiles/' + params.id && method === 'GET'){
             let tienePermiso = permisos.verPerfilUsuario;
             if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
@@ -60,51 +107,6 @@ function verificarToken(req, res, next){
         }
         else if(path === '/perfiles' && method === 'PUT'){
             let tienePermiso = permisos.actualizarPerfilUsuario;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
-            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
-        }
-        else if(path === '/maquinas' && method === 'POST'){
-            let tienePermiso = permisos.registrarMaquina;
-            if(tienePermiso) return next(); 
-            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
-        }
-        else if(path === '/inventarios' && method === 'PUT'){
-            let tienePermiso = permisos.actualizarInventario;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
-            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
-        }
-        else if(path === '/compras' && method === 'POST'){
-            let tienePermiso = permisos.registrarCompra;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
-            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
-        }
-        else if(path === '/usuarios' && method === 'POST'){
-            let tienePermiso = permisos.registrarUsuario;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
-            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
-        }
-        else if(path === '/usuarios' && method === 'PUT'){
-            let tienePermiso = permisos.actualizarUsuario;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
-            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
-        }
-        else if(path === '/contratos' && method === 'POST'){
-            let tienePermiso = permisos.registrarContrato;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
-            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
-        }
-        else if(path === '/usuarios' && method === 'GET'){
-            let tienePermiso = permisos.verUsuarios;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
-            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
-        }
-        else if(path === '/reportes' && method === 'GET'){
-            let tienePermiso = permisos.verReportes;
-            if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
-            return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
-        }
-        else if(path === '/reportes/' + params.id && method === 'GET'){
-            let tienePermiso = permisos.verReporte;
             if(tienePermiso) return next(); // TODO: No olvidar devolver auth: true en business
             return res.status(401).send({auth: false, msg: msgs.unauthorized}); // Unauthorized
         }
