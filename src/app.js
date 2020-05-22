@@ -10,6 +10,7 @@ const app = express();
 dbms.connect();
 
 // Configuraciones para la comunicación con la api
+app.use(require('./config/cors'));
 app.use(express.json()); // Entender un objeto json y convertirlo a js
 app.use(express.urlencoded({extended: false})); // Entender parámetros en la url
 

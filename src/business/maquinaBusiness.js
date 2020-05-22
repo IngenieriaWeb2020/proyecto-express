@@ -25,7 +25,7 @@ async function registrarMaquina(req, res){
 
 async function maquinaById(req, res){
     try {
-        res.send({auth:true, maquina: await Maquina.findById(req.params.id)});
+        res.send({auth:true, maquina: await Maquina.findById(req.params.id, {_id:1,marca:1,modelo:1,precioCompra:1})});
     } catch (err) {
         res.status(500).send({auth: false, msg: msgs.serverError, errmsg: err.errmsg || err.message});
     }
@@ -33,8 +33,8 @@ async function maquinaById(req, res){
 
 async function maquinas(req, res){
     try {
-        let maquinasNuevas = await Maquina.find().where('estado', 'Nueva').where('estadoInventario', 'Disponible');
-        let maquinasSegunda = await Maquina.find().where('estado', 'Segunda').where('estadoInventario', 'Disponible');
+        let maquinasNuevas = await Maquina.find({estado: 'Nueva', estadoInventario: 'Disponible'},{_id:1,marca:1,modelo:1,precioCompra:1});
+        let maquinasSegunda = await Maquina.find({estado: 'Segunda', estadoInventario: 'Disponible'},{_id:1,marca:1,modelo:1,precioCompra:1});
         res.send({auth: true, maquinasNuevas, maquinasSegunda});
     } catch (err) {
         res.status(500).send({auth: false, msg: msgs.serverError, errmsg: err.errmsg || err.message});
